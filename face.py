@@ -10,7 +10,12 @@ for ano in range(8):
 for cat in range(8):
     GPIO.setup(PIN_CAT[cat], GPIO.OUT)
 ano_flg = 0
-
+point = 0
+pin = 
 while True:
-    #ここに値を入力する処理を書く
+    pin = int(input("ano=>0 cat=>1"))
+    ano_flg = int(input())
+    point = int(input())
+    if pin == 0:
+        GPIO.setup(PIN_ANO[point], ano_flg)
 GPIO.cleanup()
