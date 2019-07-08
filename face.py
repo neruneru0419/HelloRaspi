@@ -1,4 +1,4 @@
-import RPi.GPIO as GPIO
+gimport RPi.GPIO as GPIO
 import time
 
 GPIO.setmode(GPIO.BCM)
@@ -9,24 +9,8 @@ for ano in range(8):
     GPIO.setup(PIN_ANO[ano], GPIO.OUT)
 for cat in range(8):
     GPIO.setup(PIN_CAT[cat], GPIO.OUT)
+ano_flg = 0
 
-ARRAY_A = [ [ 0, 0, 0, 1, 1, 0, 0, 0 ],
-            [ 0, 0, 1, 0, 0, 1, 0, 0 ],
-            [ 0, 1, 0, 0, 0, 0, 1, 0 ],
-            [ 0, 1, 0, 0, 0, 0, 1, 0 ],
-            [ 0, 1, 0, 0, 0, 0, 1, 0 ],
-            [ 0, 1, 1, 1, 1, 1, 1, 0 ],
-            [ 0, 1, 0, 0, 0, 0, 1, 0 ],
-            [ 0, 1, 0, 0, 0, 0, 1, 0 ] ]
 while True:
-    for cat in range(8):
-        GPIO.output(PIN_CAT[cat], False)
-        for ano in range(8):
-            GPIO.output(PIN_ANO[ano], ARRAY_A[cat][ano])
-        time.sleep(0.1)
-        for ano in range(8):
-            GPIO.output(PIN_ANO[ano], False)
-        GPIO.output(PIN_CAT[cat], True)
+    #ここに値を入力する処理を書く
 GPIO.cleanup()
-
-
