@@ -12,10 +12,10 @@ for cat in range(8):
 
 while True:
     for cat in range(8):
-        GPIO.output(PIN_CAT[cat], 0)
-        for ano in range(8):
-            GPIO.output(PIN_ANO[ano], 1)
-            time.sleep(0.1)
-            GPIO.output(PIN_ANO[ano], 0)
         GPIO.output(PIN_CAT[cat], 1)
+        for ano in range(8):
+            #GPIO.output(PIN_ANO[ano], 1)
+            time.sleep(0.1) 
+            GPIO.output(PIN_ANO[ano], 0)
+        #GPIO.output(PIN_CAT[cat], 1)
 GPIO.cleanup()
