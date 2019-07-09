@@ -70,11 +70,11 @@ class DotMatrixLED:
         except:
             print("ctrl+cが押されました")
 
-UniboFace = DotMatrixLED()
+unibo_face = DotMatrixLED()
 while True:
     select_unibo_face = int(input("表情を選択してください(ctrl+cで表情選択に戻ります) 1:normal 2:movednormal 3:smail 4:movedsmail 0:終了\n=>"))
     if select_unibo_face:
-        UniboFace.select_face(select_unibo_face)
+        unibo_face.select_face(select_unibo_face)
     else:
         break
 GPIO.cleanup()
