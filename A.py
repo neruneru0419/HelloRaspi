@@ -24,7 +24,7 @@ while True:
 		# アノードのループ
 		for ano in range(8):
 			GPIO.setup( PIN_ANO[ano], ARRAY_A[cat][ano] ) # HIGH or LOW
-		webiopi.sleep(0.0001) # 点灯時間（100μ秒）
+		time.sleep(0.0001) # 点灯時間（100μ秒）
 		for ano in range(8):
 			GPIO.setup(PIN_ANO[ano], False) # LOWに戻す
 		GPIO.setup(PIN_CAT[cat], True); # HIGHに戻す
