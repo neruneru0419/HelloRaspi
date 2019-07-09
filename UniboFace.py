@@ -11,7 +11,7 @@ class DotMatrixLED:
         for cat in range(8):
             GPIO.setup(self.PIN_CAT[cat], GPIO.OUT)
 
-        self.NormalFace = [[ 1, 1, 1, 1, 1, 1, 1, 1 ],
+        self.normal_face = [[ 1, 1, 1, 1, 1, 1, 1, 1 ],
                            [ 1, 1, 1, 1, 1, 1, 1, 1 ],
                            [ 1, 1, 0, 1, 1, 0, 1, 1 ],
                            [ 1, 1, 0, 1, 1, 0, 1, 1 ],
@@ -20,7 +20,7 @@ class DotMatrixLED:
                            [ 1, 1, 1, 1, 1, 1, 1, 1 ],
                            [ 1, 1, 1, 1, 1, 1, 1, 1 ]]
 
-        self.MovedNormalFace = [[ 1, 1, 1, 1, 1, 1, 1, 1 ],
+        self.moved_normal_face = [[ 1, 1, 1, 1, 1, 1, 1, 1 ],
                                 [ 1, 1, 1, 1, 1, 1, 1, 1 ],
                                 [ 1, 1, 1, 0, 1, 1, 0, 1 ],
                                 [ 1, 1, 1, 0, 1, 1, 0, 1 ],
@@ -29,7 +29,7 @@ class DotMatrixLED:
                                 [ 1, 1, 1, 1, 1, 1, 1, 1 ],
                                 [ 1, 1, 1, 1, 1, 1, 1, 1 ]]
 
-        self.SmailFace = [[ 1, 1, 1, 1, 1, 1, 1, 1 ],
+        self.smail_face = [[ 1, 1, 1, 1, 1, 1, 1, 1 ],
                           [ 1, 1, 1, 1, 1, 1, 1, 1 ],
                           [ 1, 0, 0, 1, 1, 0, 0, 1 ],
                           [ 1, 0, 0, 1, 1, 0, 0, 1 ],
@@ -38,7 +38,7 @@ class DotMatrixLED:
                           [ 1, 1, 0, 0, 0, 0, 1, 1 ],
                           [ 1, 1, 1, 1, 1, 1, 1, 1 ]]
 
-        self.MovedSmailFace = [[ 1, 1, 1, 1, 1, 1, 1, 1 ],
+        self.moved_smail_face = [[ 1, 1, 1, 1, 1, 1, 1, 1 ],
                                [ 1, 1, 1, 1, 1, 1, 1, 1 ],
                                [ 1, 1, 0, 0, 1, 1, 0, 0 ],
                                [ 1, 1, 0, 0, 1, 1, 0, 0 ],
@@ -47,7 +47,7 @@ class DotMatrixLED:
                                [ 1, 1, 1, 0, 0, 0, 0, 1 ],
                                [ 1, 1, 1, 1, 1, 1, 1, 1 ]]
     #ダイナミック点灯をする関数
-    def SelectFace(self, face):
+    def select_face(self, face):
         try:
             while True:
                 #カソードのループ
@@ -56,13 +56,13 @@ class DotMatrixLED:
                     # アノードのループ
                     for ano in range(8):
                         if face == 1:
-                            GPIO.setup(self.PIN_ANO[ano], self.NormalFace[cat][ano]) # HIGH or LOW
+                            GPIO.setup(self.PIN_ANO[ano], self.normal_face[cat][ano]) # HIGH or LOW
                         elif face == 2:
-                            GPIO.setup(self.PIN_ANO[ano], self.MovedNormalFace[cat][ano]) # HIGH or LOW
+                            GPIO.setup(self.PIN_ANO[ano], self.moved_normal_face[cat][ano]) # HIGH or LOW
                         elif face == 3:
-                            GPIO.setup(self.PIN_ANO[ano], self.SmailFace[cat][ano]) # HIGH or LOW
+                            GPIO.setup(self.PIN_ANO[ano], self.smail_face[cat][ano]) # HIGH or LOW
                         elif face == 4:
-                            GPIO.setup(self.PIN_ANO[ano], self.MovedSmailFace[cat][ano]) # HIGH or LOW
+                            GPIO.setup(self.PIN_ANO[ano], self.moved_smail_face[cat][ano]) # HIGH or LOW
                     time.sleep(0.0001) 
                     for ano in range(8):
                         GPIO.setup(self.PIN_ANO[ano], False) # LOWに戻す
@@ -72,9 +72,9 @@ class DotMatrixLED:
 
 UniboFace = DotMatrixLED()
 while True:
-    SelectUniboFace = int(input("表情を選択してください(ctrl+cで表情選択に戻ります) 1:normal 2:movednormal 3:smail 4:movedsmail 0:終了\n=>"))
-    if SelectUniboFace:
-        UniboFace.SelectFace(SelectUniboFace)
+    select_unibo_face = int(input("表情を選択してください(ctrl+cで表情選択に戻ります) 1:normal 2:movednormal 3:smail 4:movedsmail 0:終了\n=>"))
+    if select_unibo_face:
+        UniboFace.select_face(select_unibo_face)
     else:
         break
 GPIO.cleanup()
