@@ -30,7 +30,7 @@ class DotMatrixLED:
                                   [ 0, 0, 0, 0, 0, 0, 0, 0 ],
                                   [ 0, 0, 0, 0, 0, 0, 0, 0 ]]
 
-        self.smail_face = [[ 0, 0, 0, 0, 0, 0, 0, 0 ],
+        self.smile_face = [[ 0, 0, 0, 0, 0, 0, 0, 0 ],
                            [ 0, 0, 0, 0, 0, 0, 0, 0 ],
                            [ 0, 1, 1, 0, 0, 1, 1, 0 ],
                            [ 0, 1, 1, 0, 0, 1, 1, 0 ],
@@ -39,7 +39,7 @@ class DotMatrixLED:
                            [ 0, 0, 1, 1, 1, 1, 0, 0 ],
                            [ 0, 0, 0, 0, 0, 0, 0, 0 ]]
 
-        self.moved_smail_face = [[ 0, 0, 0, 0, 0, 0, 0, 0 ],
+        self.moved_smile_face = [[ 0, 0, 0, 0, 0, 0, 0, 0 ],
                                  [ 0, 0, 0, 0, 0, 0, 0, 0 ],
                                  [ 0, 0, 1, 1, 0, 0, 1, 1 ],
                                  [ 0, 0, 1, 1, 0, 0, 1, 1 ],
@@ -62,9 +62,9 @@ class DotMatrixLED:
                         elif face == 2:
                             GPIO.output(self.PIN_ANO[ano], self.moved_normal_face[cat][ano]) # HIGH or LOW
                         elif face == 3:
-                            GPIO.output(self.PIN_ANO[ano], self.smail_face[cat][ano]) # HIGH or LOW
+                            GPIO.output(self.PIN_ANO[ano], self.smile_face[cat][ano]) # HIGH or LOW
                         elif face == 4:
-                            GPIO.output(self.PIN_ANO[ano], self.moved_smail_face[cat][ano]) # HIGH or LOW
+                            GPIO.output(self.PIN_ANO[ano], self.moved_smile_face[cat][ano]) # HIGH or LOW
                     time.sleep(0.0001) 
                     for ano in range(8):
                         GPIO.output(self.PIN_ANO[ano], False) # LOWに戻す
@@ -77,7 +77,7 @@ class DotMatrixLED:
 unibo_face = DotMatrixLED()
 while True:
     try:
-        select_unibo_face = int(input("表情を選択してください(選択した後はctrl+cで表情選択に戻ります) 1:normal 2:movednormal 3:smail 4:movedsmail 0:終了\n=>"))
+        select_unibo_face = int(input("表情を選択してください(選択した後はctrl+cで表情選択に戻ります) 1:normal 2:movednormal 3:smile 4:movedsmile 0:終了\n=>"))
         if select_unibo_face:
             unibo_face.select_face(select_unibo_face)
         else:
