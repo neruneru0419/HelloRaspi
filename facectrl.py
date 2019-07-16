@@ -9,13 +9,14 @@ for ano in range(8):
     GPIO.setup(PIN_ANO[ano], GPIO.OUT)
 for cat in range(8):
     GPIO.setup(PIN_CAT[cat], GPIO.OUT)
-
-while True:
-    for cat in range(8):
-        GPIO.output(PIN_CAT[cat], 1)
-        for ano in range(8):
-            #GPIO.output(PIN_ANO[ano], 1)
-            time.sleep(0.1) 
-            GPIO.output(PIN_ANO[ano], 0)
-        #GPIO.output(PIN_CAT[cat], 1)
-GPIO.cleanup()
+try:
+    while True:
+        for cat in range(8):
+            GPIO.output(PIN_CAT[cat], 1)
+            for ano in range(8):
+                #GPIO.output(PIN_ANO[ano], 1)
+                time.sleep(0.1) 
+                GPIO.output(PIN_ANO[ano], 0)
+            #GPIO.output(PIN_CAT[cat], 1)
+except:    
+    GPIO.cleanup()
